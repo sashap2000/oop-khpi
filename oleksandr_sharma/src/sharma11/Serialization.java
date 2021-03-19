@@ -51,7 +51,7 @@ public class Serialization {
 		else {
 			decoder = new XMLDecoder(
 				    new BufferedInputStream(
-				    new FileInputStream();
+				    new FileInputStream("home/alexsharma/Документи/LABS_JAVA_OOP/oop-khpi/oleksandr_sharma/src/sharma11/4Firms11xml")));
 			}
 		List<Agency> object = new List<Agency>();
 			System.out.println(size);
