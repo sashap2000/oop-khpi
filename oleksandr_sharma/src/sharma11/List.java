@@ -36,8 +36,8 @@ class List<T extends Agency> implements Iterable<T> {
     }
 
     public void remove(T data) {
-        Node current = getHead();
-        Node next = current.getNext();
+        Node<T> current = getHead();
+        Node<T> next = current.getNext();
 
         if (getHead().getData().equals(data)) {
             if (_size == 1) {
@@ -65,8 +65,8 @@ class List<T extends Agency> implements Iterable<T> {
     
     public Agency[] toArray() {
       Agency[] temp = new Agency[_size];
-      Node current = getHead();
-      Node next = current.getNext();
+      Node<T> current = getHead();
+      Node<T> next = current.getNext();
       for(int i = 0; i < _size; i++) {
         temp[i] = (Agency) current.getData();
         current = next;
@@ -151,7 +151,7 @@ class List<T extends Agency> implements Iterable<T> {
     						prev.setNext(next);
     					}
     				
-    					Node tmp = next.getNext();
+    					Node<T> tmp = next.getNext();
     					next.setNext(current);
     					current.setNext(tmp);
     					

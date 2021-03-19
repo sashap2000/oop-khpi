@@ -51,7 +51,7 @@ public class Serialization {
 		else {
 			decoder = new XMLDecoder(
 				    new BufferedInputStream(
-				    new FileInputStream("C:\\Users\\{Dean}\\eclipse-workspace\\hulevych_andrii\\4Firms11.xml")));	
+				    new FileInputStream();
 			}
 		List<Agency> object = new List<Agency>();
 			System.out.println(size);
