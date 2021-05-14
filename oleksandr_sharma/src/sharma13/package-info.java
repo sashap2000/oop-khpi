@@ -1,1 +1,0 @@
-package ua.khpi.oop.hulevych13;
