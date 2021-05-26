@@ -11,5 +11,7 @@ public class Main {
 		//else
 		Helper.lets_go(0);
 	} 
-	
+	public static <T> void sort(List<T> list) {
+		list.sortList();
+	}
 }

@@ -4,7 +4,8 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
 public class Agency implements Externalizable{
-	private String firmName;
+
+    private String firmName;
     private String position;
     private String circs;
     private Integer salary;
