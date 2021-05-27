@@ -1,30 +1,21 @@
+package sharma15;
 import java.util.Iterator;
+import java.util.LinkedList;
+
+import org.junit.jupiter.api.Test;
 
 class List<T extends Agency> implements Iterable<T> { 
-    private Node<T> head, tail; 
-    private int _size;
+	
+	LinkedList<Agency> T= new LinkedList<Agency>();
+	
       
     public int getSize() {
-        return _size;
+        return T.size();
     }
     
-
     public void add(T data) 
-    { 
-        Node<T> node = new Node<>(data, null); 
-        if (this.head == null) {
-        	this.head = node;
-            _size++;
-        }
-        else { 
-        	Node<T> current = this.head;
-        	while(current.getNext() != null) {
-        		current = current.getNext();
-        	}
-        	current.setNext(node);
-        	this.tail = current.getNext();
-            _size++;
-        } 
+    {  
+        T.add(data);
     } 
 
     public void add(T[] array) {
@@ -34,39 +25,15 @@ class List<T extends Agency> implements Iterable<T> {
     }
 
     public void remove(T data) {
-        Node current = getHead();
-        Node next = current.getNext();
-
-        if (getHead().getData().equals(data)) {
-            if (_size == 1) {
-                getHead().setData(null);
-                _size--;
-                return;
-            }
-            getHead().setData(null);
-            head = getHead().getNext();
-            _size--;
-            return;
-        }
-
-        while (next != null) {
-            if (next.getData().equals(data)) {
-                current.setNext(next.getNext());
-                next = null;
-                _size--;
-                return;
-            }
-            current = next;
-            next = current.getNext();
-        }
+        T.remove(data);
     }
     
     public Agency[] toArray() {
-      Agency[] temp = new Agency[_size];
-      Node current = getHead();
-      Node next = current.getNext();
-      for(int i = 0; i < _size; i++) {
-        temp[i] = (Agency) current.getData();
+      Agency[] temp = new Agency[T.size()];
+      Agency current = T.getFirst();
+      Agency next = T.get(2);
+      for(int i = 0; i < T.size(); i++) {
+        temp[i] = (Agency) current.getClass();
         current = next;
         //next = current.getNext();
       }
@@ -87,24 +54,20 @@ class List<T extends Agency> implements Iterable<T> {
     	return temp.toString();
     }
     // return Head 
-    public Node<T> getHead() 
+    public Agency getHead() 
     { 
-        return head; 
+        return T.getFirst(); 
     } 
     
       
     // return Tail 
-    public Node<T> getTail() 
+    public Agency getTail() 
     { 
-        return tail; 
+        return T.getLast(); 
     } 
       
-    // return Iterator instance 
-    public Iterator<T> iterator() 
-    { 
-        return new ListIterator<T>(this); 
-    } 
-    
+
+     
     public static<T extends Agency> boolean compareFirmNames(T p1, T p2) {
         
     	if(p1.getFirmName().length() > p2.getFirmName().length()) {
@@ -130,100 +93,18 @@ class List<T extends Agency> implements Iterable<T> {
     }
     
     public void sortList() {
-    	if(this.head == null) {
+    	if(T.getFirst() == null) {
     		return;
     	}
-    	boolean exit = false;
-    	while(!exit) {
-    		exit = true;
-    		Node<T> current = head;
-    		Node<T> prev = null;
-    		while(current != null) {
-    			Node<T> next = current.getNext();
-    			if(next != null) {
-    				if(compareFirmNames(current.getData(), next.getData())) {
-    					if(current == this.head) {
-    						this.head = next;
-    					}
-    					if(prev != null) {
-    						prev.setNext(next);
-    					}
-    				
-    					Node tmp = next.getNext();
-    					next.setNext(current);
-    					current.setNext(tmp);
-    					
-    					exit = false;
-    				}
-    			}
-    			prev = current;
-                current = next;
-    		}
-    		
-    	}
+    	T.sort(null);
     	
-    }
+    	}
+
+
+	@Override
+	public Iterator<T> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
-} 
-  
-class ListIterator<T extends Agency> implements Iterator<T> { 
-    Node<T> current; 
-      
-    // initialize pointer to head of the list for iteration 
-    public ListIterator(List<T> list) 
-    { 
-        current = list.getHead(); 
-    } 
-      
-    // returns false if next element does not exist 
-    public boolean hasNext() 
-    { 
-        return current != null; 
-    } 
-      
-    // return current data and update pointer 
-    public T next() 
-    { 
-        T data = current.getData(); 
-        current = current.getNext(); 
-        return data; 
-    } 
-      
-    // implement if needed 
-    public void remove() 
-    { 
-        throw new UnsupportedOperationException(); 
-    } 
-} 
-  
-// Constituent Node of Linked List 
-class Node<T> { 
-    T data; 
-    Node<T> next; 
-    public Node(T data, Node<T> next) 
-    { 
-        this.data = data; 
-        this.next = next; 
-    } 
-      
-    // Setter getter methods for Data and Next Pointer 
-    public void setData(T data) 
-    { 
-        this.data = data; 
-    } 
-      
-    public void setNext(Node<T> next) 
-    { 
-        this.next = next; 
-    } 
-      
-    public T getData() 
-    { 
-        return data; 
-    } 
-      
-    public Node<T> getNext() 
-    { 
-        return next; 
-    } 
 } 
