@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class List<T extends Agency> implements Iterable<T> { 
 	
-	LinkedList<Agency> T= new LinkedList<Agency>();
+	LinkedList<Agency> D = new LinkedList<Agency>();
 	
       
     public int getSize() {
